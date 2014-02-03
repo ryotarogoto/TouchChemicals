@@ -1,21 +1,22 @@
 <?php
 require 'vendor/autoload.php';
 
-$view = $app->view();
-$view->parserOptions = array(
-    'debug' => true,
-    'cache' => dirname(__FILE__) . '/cache'
-);
-$view->parserExtensions = array(
-    new \Slim\Views\TwigExtension(),
-);
-
 $app = new \Slim\Slim(array(
     'view' => new \Slim\Views\Twig()
 ));
 
-$app->get('/hello/:name', function ($name) {
-    echo "hello, $name";
+$view = $app->view();
+$view->parserOptions = array(
+    'debug' => true,
+);
+$view->parserDirectory = dirname(__FILE__) . '/templates';
+$view->parserExtensions = array(
+    new \Slim\Views\TwigExtension(),
+);
+
+
+$app->get('/', function () use ($view){
+    $view->render(urlFor('hello'));
 });
 
 $app->run();
