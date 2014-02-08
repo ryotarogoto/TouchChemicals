@@ -1,7 +1,6 @@
 {
     "require": {
-        "slim/slim": "2.*",
-        "slim/views": "0.1.*",
-        "twig/twig": "v1.14.2"
+        "silex/silex": "1.0.*@dev",
+        "twig/twig": ">=1.8,<2.0-dev"
     }
 }
